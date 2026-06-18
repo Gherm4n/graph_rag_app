@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+    hospital_neo4j_etl:
+        build:
+            context: ./hospital_neo4j_etl
+        env_file:
+            - .env
+    ollama:
+        build:
+            context: ./ollama
+        ports:
+            - "11435:11434"
+        restart: unless-stopped
+    chatbot-api:
+        build:
+            context: ./chatbot_api
+        env_file:
+            - .env
+        depends_on:
+            - hospital_neo4j_etl
+            - ollama
+        ports:
+            - "8000:8000"
+    chatbot_frontend:
+        build:
+            context: ./chatbot_frontend
+        env_file:
+            - .env
+        depends_on:
+            - chatbot-api
+        ports:
+            - "8501:8501"
+        environment:
+            - CHATBOT_URL=http://chatbot-api:8000/hospital-rag-agent

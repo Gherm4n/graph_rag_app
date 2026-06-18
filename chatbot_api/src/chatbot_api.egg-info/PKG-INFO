@@ -1,0 +1,18 @@
+Metadata-Version: 2.4
+Name: chatbot_api
+Version: 0.1
+Requires-Dist: fastapi>=0.110.0
+Requires-Dist: uvicorn>=0.29.0
+Requires-Dist: pydantic>=2.7.0
+Requires-Dist: numpy>=1.26.0
+Requires-Dist: neo4j<6.0.0,>=5.14.1
+Requires-Dist: langchain>=0.3.0
+Requires-Dist: langchain-core>=0.3.0
+Requires-Dist: langchain-community>=0.3.0
+Requires-Dist: langchain-neo4j>=0.1.0
+Requires-Dist: langchainhub>=0.1.15
+Requires-Dist: langchain-openai>=0.1.0
+Requires-Dist: langchain-google-genai>=2.0.0
+Provides-Extra: dev
+Requires-Dist: black; extra == "dev"
+Requires-Dist: flake8; extra == "dev"
